@@ -1,0 +1,132 @@
+using UnityEngine;
+using TMPro;
+using DG.Tweening;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
+
+public class DialogueManager : MonoBehaviour
+{
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI dialogueText;
+
+    [Header("Typing")]
+    [SerializeField] private float charsPerSecond = 30f;
+
+
+
+    private Tween typingTween;
+    private DialogueSlot currentDialogueSlot;
+    private string currentLine = "";
+    private bool isTyping = false;
+    private bool isLineFullyShown = false;
+
+
+    public static DialogueManager Instance;
+
+    private void Awake()
+    {
+        if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
+        else Destroy(gameObject);
+    }
+
+
+ 
+        private void Update()
+        {
+            if (Keyboard.current != null &&
+                Keyboard.current.enterKey.wasPressedThisFrame)
+            {
+                HandleAdvanceInput();
+            }
+        }
+
+
+    public void SetDialogueSlot(DialogueSlot target) // 현재 대화 슬롯 세팅 
+    {
+        currentDialogueSlot = target;
+        if (currentDialogueSlot != null)
+        {
+            Debug.Log(currentDialogueSlot.text);
+        }
+        else
+        {
+            Debug.Log("current is null");
+        }
+
+            StartDialogue();
+    }
+
+    public void StartDialogue() //대화시작 
+    {
+        string line = currentDialogueSlot.text;
+
+        KillTypingTween();
+
+        currentLine = line;
+        dialogueText.text = "";
+        isTyping = true;
+        isLineFullyShown = false;
+
+        float duration = Mathf.Max(0.01f, currentLine.Length / charsPerSecond);
+
+        typingTween = DOTween.To(
+            () => dialogueText.text.Length,
+            x => dialogueText.text = currentLine.Substring(0, x),
+            currentLine.Length,
+            duration
+        )
+        .SetEase(Ease.Linear)
+        .OnComplete(() =>
+        {
+            isTyping = false;
+            isLineFullyShown = true;
+            dialogueText.text = currentLine;
+        });
+    }
+
+    private void HandleAdvanceInput() // 대화 종료 
+    {
+        
+        if (isTyping && !isLineFullyShown)
+        {
+            ForceCompleteLine();
+            return;
+        }
+
+
+        if (isLineFullyShown)
+        {
+            StartNext();
+        }
+    }
+
+    private void ForceCompleteLine()
+    {
+        KillTypingTween();
+        dialogueText.text = currentLine;
+        isTyping = false;
+        isLineFullyShown = true;
+    }
+
+    private void StartNext()
+    {
+        if (currentDialogueSlot.nextDialogueSlot != null) // 다음 대화가 존재하면 그대로 출력 
+        {
+            SetDialogueSlot(currentDialogueSlot.nextDialogueSlot);
+        }
+        else //대화는 끝났고 이미지 변경이나 다른거 함 
+        {
+            
+            GameProgressManager.Instance.UpProgress();
+            PresentManager.Instance.SetImageSlot();
+        }
+      
+    }
+
+    private void KillTypingTween()
+    {
+        if (typingTween != null && typingTween.IsActive())
+            typingTween.Kill();
+        typingTween = null;
+    }
+}
