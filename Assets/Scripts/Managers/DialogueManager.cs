@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
 {
+    [Header("Panel")]
+    [SerializeField] private GameObject dialoguePanel;
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI dialogueText;
 
@@ -20,17 +22,21 @@ public class DialogueManager : MonoBehaviour
     private bool isTyping = false;
     private bool isLineFullyShown = false;
 
-
-    public static DialogueManager Instance;
-
     private void Awake()
     {
-        if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
-        else Destroy(gameObject);
+        HideDialogue();
     }
 
 
- 
+    private void ShowDialogue()
+    {
+        dialoguePanel.SetActive(true);
+    }
+    private void HideDialogue()
+    {
+        dialoguePanel.SetActive(false);
+    }
+
         private void Update()
         {
             if (Keyboard.current != null &&
@@ -43,6 +49,8 @@ public class DialogueManager : MonoBehaviour
 
     public void SetDialogueSlot(DialogueSlot target) // 현재 대화 슬롯 세팅 
     {
+        ShowDialogue();
+
         currentDialogueSlot = target;
         if (currentDialogueSlot != null)
         {
@@ -84,6 +92,34 @@ public class DialogueManager : MonoBehaviour
         });
     }
 
+    public void StartDialogue(string input) //대화시작 
+    {
+        string line = input;
+
+        KillTypingTween();
+
+        currentLine = line;
+        dialogueText.text = "";
+        isTyping = true;
+        isLineFullyShown = false;
+
+        float duration = Mathf.Max(0.01f, currentLine.Length / charsPerSecond);
+
+        typingTween = DOTween.To(
+                () => dialogueText.text.Length,
+                x => dialogueText.text = currentLine.Substring(0, x),
+                currentLine.Length,
+                duration
+            )
+            .SetEase(Ease.Linear)
+            .OnComplete(() =>
+            {
+                isTyping = false;
+                isLineFullyShown = true;
+                dialogueText.text = currentLine;
+            });
+    }
+
     private void HandleAdvanceInput() // 대화 종료 
     {
         
@@ -116,7 +152,7 @@ public class DialogueManager : MonoBehaviour
         }
         else //대화는 끝났고 이미지 변경이나 다른거 함 
         {
-            
+            HideDialogue();
             GameProgressManager.Instance.UpProgress();
             PresentManager.Instance.SetImageSlot();
         }

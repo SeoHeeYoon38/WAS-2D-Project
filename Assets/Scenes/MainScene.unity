@@ -1656,7 +1656,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Hello World..
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1689,7 +1689,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -4186,6 +4186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fbd5dea0a49abd4d9987be8639ac30f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PresentManager
+  selectManager: {fileID: 0}
+  selfDialogueManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  repeatManager: {fileID: 0}
   targetImage: {fileID: 1846095811}
   slotStorage: {fileID: 1543927994}
 --- !u!4 &1543927996
@@ -4466,7 +4470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SelfDialogueManager
   dialoguePanel: {fileID: 173309714}
   dialogueText: {fileID: 401469937}
-  fadeTime: 0.5
+  fadeTime: 2
 --- !u!114 &1650507389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4479,6 +4483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d7af16de4fda4439071cc45e941bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
+  dialoguePanel: {fileID: 1803950334}
   dialogueText: {fileID: 352973225}
   charsPerSecond: 30
 --- !u!1 &1697111139
@@ -5680,7 +5685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4037736, g: 0.39234605, b: 0.39234605, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
