@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ab76beec9726249949b159d955767a, type: 3}
+  m_Name: 1-1PresentationCard
+  m_EditorClassIdentifier: Assembly-CSharp::PresentationCard
+  stage: 1
+  chapter: 1
+  imageSlots:
+  - {fileID: 11400000, guid: 343e063e17367164e98af6fd587f69b4, type: 2}
+  - {fileID: 11400000, guid: 8b1ab97006df7eb43be0b91075c85ba0, type: 2}
+  - {fileID: 11400000, guid: 70e0a0c43fefbc54e8661c640f5787cc, type: 2}
+  - {fileID: 11400000, guid: 09076eca69896dd4d8c9c77b7538510f, type: 2}
+  repeatSlots:
+  - {fileID: 0}
+  selectNumbers: 000000000000000000000000
+  currentImageIdx: 0
+  currentRepeatIdx: 0

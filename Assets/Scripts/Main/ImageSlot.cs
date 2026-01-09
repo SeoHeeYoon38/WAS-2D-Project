@@ -4,16 +4,10 @@ using UnityEngine.Events;
 [CreateAssetMenu(menuName = "Story/Image Slot", fileName = "ImageSlot")]
 public class ImageSlot : ScriptableObject
 {
-    [Header("1) º¸¿©ÁÙ ÀÌ¹ÌÁö")]
+    [Header("1) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½")]
     public Sprite sprite;
-
-    [Header("2) ÀÌ¹ÌÁö ½ÃÀÛ ÀÌº¥Æ®")]
-    public UnityEvent onStart;
-
-    [Header("3) ÀÌ¹ÌÁö ³¡ ÀÌº¥Æ®")]
-    public UnityEvent onEnd;
-
-    [Header("4) ³ª¿Ã ´ë»ç ")] 
+    
+    [Header("2) ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ")] 
     public DialogueSlot dialogueSlot;
 
 }

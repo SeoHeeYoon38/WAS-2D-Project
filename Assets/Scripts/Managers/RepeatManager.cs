@@ -2,17 +2,18 @@ using UnityEngine;
 
 public class RepeatManager : MonoBehaviour 
 {
-    [Header("¹Ýº¹ ÆÐ³Î")]
+    [Header("ï¿½Ýºï¿½ ï¿½Ð³ï¿½")]
     [SerializeField] private GameObject repeatPanel;
 
     private void Awake()
     {
         if (repeatPanel != null)
-            repeatPanel.SetActive(false); // ½ÃÀÛ ½Ã ²¨µÎ±â
+            repeatPanel.SetActive(false); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Î±ï¿½
     }
 
     public void ShowPanel()
     {
+        
         if (repeatPanel != null)
             repeatPanel.SetActive(true);
     }

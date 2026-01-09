@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class SlotStorage : MonoBehaviour
+public class PresentationCardStorage : MonoBehaviour
 {
 
-    [SerializeField] private ImageSlot[] slots = new ImageSlot[40];
+    [SerializeField] private PresentationCard[] slots = new PresentationCard[40];
 
     private const int ChapterCount = 5;
     private const int StageCount = 8;
 
-    public ImageSlot GetImageSlot(int chapter, int stage)
+    public PresentationCard GetPresentationCard(int chapter, int stage)
     {
         if (chapter < 1 || chapter > ChapterCount || stage < 1 || stage > StageCount)
         {
@@ -20,14 +20,14 @@ public class SlotStorage : MonoBehaviour
 
         if (slots == null || slots.Length != ChapterCount * StageCount)
         {
-            Debug.LogError($"slots ±æÀÌ´Â {ChapterCount * StageCount} ÀÌ¾î¾ß ÇÕ´Ï´Ù.");
+            Debug.LogError($"slots ï¿½ï¿½ï¿½Ì´ï¿½ {ChapterCount * StageCount} ï¿½Ì¾ï¿½ï¿½ ï¿½Õ´Ï´ï¿½.");
             return null;
         }
 
         var slot = slots[index];
         if (slot == null)
         {
-            Debug.LogWarning($"ImageSlotÀÌ ºñ¾îÀÖÀ½: chapter {chapter}, stage {stage} (index {index})");
+            Debug.LogWarning($"ImageSlotï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: chapter {chapter}, stage {stage} (index {index})");
         }
         return slot;
     }

@@ -2,11 +2,11 @@ using UnityEngine;
 using TMPro;
 public class SelectManager : MonoBehaviour
 {
-    [Header("¼±ÅÃÁö ÆÐ³Î")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½")]
     [SerializeField] private GameObject selectPanel;
 
 
-    [Header("Dropdown 3°³")]
+    [Header("Dropdown 3ï¿½ï¿½")]
     [SerializeField] private TMP_Dropdown dropdown1;
     [SerializeField] private TMP_Dropdown dropdown2;
     [SerializeField] private TMP_Dropdown dropdown3;
@@ -14,7 +14,7 @@ public class SelectManager : MonoBehaviour
     private void Awake()
     {
         if (selectPanel != null)
-            selectPanel.SetActive(false); // ½ÃÀÛ ½Ã ²¨µÎ±â
+            selectPanel.SetActive(false); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Î±ï¿½
     }
 
     public void ShowSelectPanel()
@@ -39,13 +39,10 @@ public class SelectManager : MonoBehaviour
      
 
      
-        ResultDefault(v1, v2, v3);
-        
+        PresentManager.Instance.SwitchSelectImage(v1, v2, v3);
+        Debug.Log($"ï¿½âº» ï¿½ï¿½ï¿½: ({v1}, {v2}, {v3})");
     }
 
-    private void ResultDefault(int v1, int v2, int v3)
-    {
-        Debug.Log($"±âº» °á°ú: ({v1}, {v2}, {v3})");
-    }
+  
 
 }

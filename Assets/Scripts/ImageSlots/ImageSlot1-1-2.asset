@@ -10,13 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1544681a4cc11bb46b0d1fae584edaaa, type: 3}
-  m_Name: ImageSlot1-2
+  m_Name: ImageSlot1-1-2
   m_EditorClassIdentifier: Assembly-CSharp::ImageSlot
   sprite: {fileID: 4653932814348791077, guid: f47f78478d8c114489f50aeaf2c992ea, type: 3}
-  onStart:
-    m_PersistentCalls:
-      m_Calls: []
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  dialogueSlot: {fileID: 11400000, guid: 38b581638d9299a4e895a02defd9c65e, type: 2}
+  dialogueSlot: {fileID: 11400000, guid: 972880c124bebec439f8712d7fed93e5, type: 2}

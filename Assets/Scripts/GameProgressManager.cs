@@ -15,7 +15,6 @@ public class GameProgressManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            LoadProgress();
         }
         else
         {
@@ -65,6 +64,15 @@ public class GameProgressManager : MonoBehaviour
         SaveProgress(chapter,stage);
     }
 
+    public void InitializeProgress()
+    {
+        int chapter= 1;
+        int stage = 1;
+        SaveProgress(chapter, stage);
+        LoadProgress();
+        
+    }
+    
     public PlayerProgress GetProgress()
     {
         return progress;

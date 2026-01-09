@@ -6,46 +6,21 @@ using UnityEngine.UI;
 public class RepeatApplyManager : MonoBehaviour
 {
     
-    [SerializeField] private RepeatSlot[] allSlots; // 모든 RepeatSlot SO를 여기 넣기
+    [SerializeField] private RepeatSlot[] currentRepeatSlots; // 모든 RepeatSlot SO를 여기 넣기
     [SerializeField] private float snapDistance = 50f;
     [SerializeField] private Transform parentImage;
-    private readonly Dictionary<(int stage, int chapter), List<RepeatSlot>> _map = new();
 
-    void Awake() // 매핑된 모든 슬롯 정리하기 
+
+    public void Initialize(RepeatSlot[] repeatSlots)
     {
-        _map.Clear();
-
-        foreach (var slot in allSlots)
-        {
-            if (slot == null) continue;
-
-            var k = (slot.Stage, slot.Chapter);
-
-            if (!_map.TryGetValue(k, out var list))
-            {
-                list = new List<RepeatSlot>(4);
-                _map.Add(k, list);
-            }
-
-            list.Add(slot);
-        }
-
-        // 선택: stage/chapter당 4개인지 체크
-        foreach (var kv in _map)
-        {
-            if (kv.Value.Count != 4)
-                Debug.LogWarning($"(stage,chapter)=({kv.Key.stage},{kv.Key.chapter}) 슬롯 개수가 {kv.Value.Count}개입니다잉 (정상은 4개).");
-        }
+        currentRepeatSlots = repeatSlots;
     }
-
+    
     public bool IsEffectiveDragDrop(Vector2 dropPos, string key)   //제대로된 위치인지 확인
     {
         var p = GameProgressManager.Instance.GetProgress();
-
-        if (!_map.TryGetValue((p.stage, p.chapter), out var slots))
-            return false;
-
-        foreach (var slot in slots)
+        
+        foreach (var slot in currentRepeatSlots)
         {
             if (slot != null && slot.IsMatch(dropPos, key, snapDistance))
                 return true;
@@ -59,12 +34,9 @@ public class RepeatApplyManager : MonoBehaviour
     {
         var p = GameProgressManager.Instance.GetProgress();
         
-        if (!_map.TryGetValue((p.stage, p.chapter), out var slots))
-            return;
-        
         RepeatSlot target = null;
 
-        foreach (var slot in slots) // 해당하는 repeatslot 찾기
+        foreach (var slot in currentRepeatSlots) // 해당하는 repeatslot 찾기
         {
             if (slot == null) continue;
             if (string.Equals(slot.Key, spriteToSpawn.name, StringComparison.Ordinal))
@@ -87,7 +59,8 @@ public class RepeatApplyManager : MonoBehaviour
         rt.anchoredPosition = target.Position;
         rt.localScale = Vector3.one;
         rt.sizeDelta = target.Size;
-        
+
+        PresentManager.Instance.ApplyRepeat();
     }
 
 

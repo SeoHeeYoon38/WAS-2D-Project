@@ -47,7 +47,7 @@ public class DialogueManager : MonoBehaviour
         }
 
 
-    public void SetDialogueSlot(DialogueSlot target) // ÇöÀç ´ëÈ­ ½½·Ô ¼¼ÆÃ 
+    public void SetDialogueSlot(DialogueSlot target) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
     {
         ShowDialogue();
 
@@ -64,7 +64,7 @@ public class DialogueManager : MonoBehaviour
             StartDialogue();
     }
 
-    public void StartDialogue() //´ëÈ­½ÃÀÛ 
+    public void StartDialogue() //ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½ 
     {
         string line = currentDialogueSlot.text;
 
@@ -92,7 +92,7 @@ public class DialogueManager : MonoBehaviour
         });
     }
 
-    public void StartDialogue(string input) //´ëÈ­½ÃÀÛ 
+    public void StartDialogue(string input) //ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½ 
     {
         string line = input;
 
@@ -120,7 +120,7 @@ public class DialogueManager : MonoBehaviour
             });
     }
 
-    private void HandleAdvanceInput() // ´ëÈ­ Á¾·á 
+    private void HandleAdvanceInput() // ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ 
     {
         
         if (isTyping && !isLineFullyShown)
@@ -146,15 +146,15 @@ public class DialogueManager : MonoBehaviour
 
     private void StartNext()
     {
-        if (currentDialogueSlot.nextDialogueSlot != null) // ´ÙÀ½ ´ëÈ­°¡ Á¸ÀçÇÏ¸é ±×´ë·Î Ãâ·Â 
+        if (currentDialogueSlot.nextDialogueSlot != null) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½×´ï¿½ï¿½ ï¿½ï¿½ï¿½ 
         {
             SetDialogueSlot(currentDialogueSlot.nextDialogueSlot);
         }
-        else //´ëÈ­´Â ³¡³µ°í ÀÌ¹ÌÁö º¯°æÀÌ³ª ´Ù¸¥°Å ÇÔ 
+        else //ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½ ï¿½ï¿½ 
         {
             HideDialogue();
-            GameProgressManager.Instance.UpProgress();
-            PresentManager.Instance.SetImageSlot();
+            //GameProgressManager.Instance.UpProgress();
+            PresentManager.Instance.PresentNextImageSlot();
         }
       
     }

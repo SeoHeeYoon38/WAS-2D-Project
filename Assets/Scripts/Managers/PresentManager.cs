@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
+
 public class PresentManager : MonoBehaviour
 {
 
@@ -21,7 +23,8 @@ public class PresentManager : MonoBehaviour
     
 
     [SerializeField] private Image targetImage;
-    [SerializeField] private SlotStorage slotStorage;
+    [SerializeField] private PresentationCardStorage presentationCardStorage;
+    [SerializeField] private PresentationCard currentPresentationCard;
     private void Awake()
     {
         if (Instance == null)
@@ -51,7 +54,7 @@ public class PresentManager : MonoBehaviour
         switch (key)
         {
             case 1:
-                SetImageSlot();
+                StartPresentation();
                 break;
             case 2:
                 selfDialogueManager.ShowDialogue("HelloWorld");
@@ -76,27 +79,78 @@ public class PresentManager : MonoBehaviour
         dialogueManager = GetComponentInChildren<DialogueManager>();
         repeatManager = GetComponentInChildren<RepeatManager>();
         repeatApplyManager = GetComponentInChildren<RepeatApplyManager>();
-        //SetImageSlot();
+        
+        //StartPresentation();
     }
 
 
-    public void SetImageSlot()
+    public void StartPresentation() //presentation card initialize
     {
         PlayerProgress progress = GameProgressManager.Instance.GetProgress();
         if (progress != null)
         {
-            ImageSlot slot=slotStorage.GetImageSlot(progress.chapter, progress.stage); //�̹��� ���Կ��� �̹��� �����ͼ� �̹��� �ٲٱ�
-
-            targetImage.sprite = slot.sprite; //�̹��� ��
-
-            dialogueManager.SetDialogueSlot(slot.dialogueSlot); // ��ȭ ��
+            currentPresentationCard=presentationCardStorage.GetPresentationCard(progress.chapter, progress.stage); //�̹��� ���Կ��� �̹��� �����ͼ� �̹��� �ٲٱ�
             
-            //slot.onStart?.Invoke();//���۽� ���ϴ� �̺�Ʈ ������ ����
-
+        }
+        PresentImageSlot();
+    }
+   
+    public void PresentNextImageSlot()
+    {
+        currentPresentationCard.PlusImageSlotIdx(); // read on imageslot
+        
+        if (currentPresentationCard.CheckIsImageSlotRemain()) //isremain?
+        {
+            PresentImageSlot();
+        }
+        else // yes
+        {
+            PresentSelectImage();
         }
     }
 
-  
+    private void PresentImageSlot()
+    {
+        ImageSlot imageSlot = currentPresentationCard.GetCurrentImageSlot();
+            
+        targetImage.sprite = imageSlot.sprite; //�̹��� ��
 
+        dialogueManager.SetDialogueSlot(imageSlot.dialogueSlot); // ��ȭ ��
+    }
+
+    
+    
+    
+    private void PresentSelectImage()
+    {
+        selectManager.ShowSelectPanel();
+    }
+
+    public void SwitchSelectImage(int v1, int v2, int v3)
+    {
+        if (currentPresentationCard.CheckIsAllSelectComplete(v1, v2, v3))//if all complete
+        {
+            selectManager.HideSelectPanel();
+            repeatApplyManager.Initialize(currentPresentationCard.GetAllRepeatSlots());
+            repeatManager.ShowPanel();
+        }
+        else // is not 
+        {
+            
+        }
+        
+    }
+
+    public void ApplyRepeat()
+    {
+        currentPresentationCard.PlusRepeatIdx();
+        
+        if (currentPresentationCard.CheckIsAllRepeatApplied())
+        {
+           //go animation  
+        }
+        
+    }
+    
     
 }

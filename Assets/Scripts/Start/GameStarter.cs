@@ -3,9 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class GameStarter : MonoBehaviour
 {
-    // ÁöÁ¤ÇÑ ¾ÀÀ¸·Î ÀÌµ¿
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
     public void LoadScene(string sceneName)
     {
+        GameProgressManager.Instance.LoadProgress();
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void InitScene(string sceneName)
+    {
+        GameProgressManager.Instance.InitializeProgress();
         SceneManager.LoadScene(sceneName);
     }
 }

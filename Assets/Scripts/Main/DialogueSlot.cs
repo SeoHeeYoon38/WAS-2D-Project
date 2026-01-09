@@ -4,20 +4,13 @@ using UnityEngine.Events;
 [CreateAssetMenu(menuName = "Story/Dialogue Slot", fileName = "DialogueSlot")]
 public class DialogueSlot : ScriptableObject
 {
-    [Header("1) ´ë»ç ÅØ½ºÆ®")]
+    [Header("1) ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ®")]
     [TextArea(2, 6)]
     public string text;
 
-    [Header("2) È¿°úÀ½")]
+    [Header("2) È¿ï¿½ï¿½ï¿½ï¿½")]
     public AudioClip sfx;
-
-    [Header("3) ½ÃÀÛ ÀÌº¥Æ®")]
-    public UnityEvent onStart;
-
-    [Header("4) ³¡ ÀÌº¥Æ®")]
-    public UnityEvent onEnd;
-
-
-    [Header("5) ´ÙÀ½ ´ë»ç°¡ ÀÖ´Ù¸é")] 
+    
+    [Header("3) ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ç°¡ ï¿½Ö´Ù¸ï¿½")] 
     public DialogueSlot nextDialogueSlot;
 }
