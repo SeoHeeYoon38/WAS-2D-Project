@@ -1468,12 +1468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30badc8a6a8b06849aafb584e091c19b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Draggable
-  rootCanvas: {fileID: 409130932}
-  savedWorldScale: {x: 0, y: 0, z: 0}
-  originalParent: {fileID: 0}
-  rt: {fileID: 0}
-  cg: {fileID: 0}
-  snapDistance: 50
+  rootCanvas: {fileID: 0}
 --- !u!114 &356884100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2081,8 +2076,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 885030310}
   - {fileID: 1095701401}
+  - {fileID: 885030310}
   m_Father: {fileID: 409130933}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2151,7 +2146,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!1 &486898193
 GameObject:
@@ -2438,12 +2433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30badc8a6a8b06849aafb584e091c19b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Draggable
-  rootCanvas: {fileID: 409130932}
-  savedWorldScale: {x: 0, y: 0, z: 0}
-  originalParent: {fileID: 0}
-  rt: {fileID: 0}
-  cg: {fileID: 0}
-  snapDistance: 50
+  rootCanvas: {fileID: 0}
 --- !u!114 &557956229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3813,12 +3803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30badc8a6a8b06849aafb584e091c19b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Draggable
-  rootCanvas: {fileID: 409130932}
-  savedWorldScale: {x: 0, y: 0, z: 0}
-  originalParent: {fileID: 0}
-  rt: {fileID: 0}
-  cg: {fileID: 0}
-  snapDistance: 50
+  rootCanvas: {fileID: 0}
 --- !u!114 &1119206331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4478,6 +4463,7 @@ MonoBehaviour:
   selfDialogueManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   repeatManager: {fileID: 0}
+  repeatApplyManager: {fileID: 0}
   targetImage: {fileID: 1846095811}
   slotStorage: {fileID: 1543927994}
 --- !u!4 &1543927996
@@ -5205,7 +5191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.20392157}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5870,12 +5856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30badc8a6a8b06849aafb584e091c19b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Draggable
-  rootCanvas: {fileID: 409130932}
-  savedWorldScale: {x: 0, y: 0, z: 0}
-  originalParent: {fileID: 0}
-  rt: {fileID: 0}
-  cg: {fileID: 0}
-  snapDistance: 50
+  rootCanvas: {fileID: 0}
 --- !u!114 &2028579559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5924,6 +5905,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2075723822}
   - component: {fileID: 2075723823}
+  - component: {fileID: 2075723824}
   m_Layer: 0
   m_Name: RepeatManager
   m_TagString: Untagged
@@ -5959,6 +5941,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RepeatManager
   repeatPanel: {fileID: 460636906}
+--- !u!114 &2075723824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075723821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 215c01dbfe0699644b19cda6c1008cfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RepeatApplyManager
+  allSlots: []
+  snapDistance: 50
+  parentImage: {fileID: 0}
 --- !u!1 &2081259868
 GameObject:
   m_ObjectHideFlags: 0

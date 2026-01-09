@@ -10,8 +10,15 @@ public class PresentManager : MonoBehaviour
     [SerializeField] private SelfDialogueManager selfDialogueManager;
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private RepeatManager repeatManager;
-    
+    [SerializeField] private RepeatApplyManager repeatApplyManager;
 
+    public SelectManager SelectManager => selectManager;
+    public SelfDialogueManager SelfDialogueManager => selfDialogueManager;
+    public DialogueManager DialogueManager => dialogueManager;
+    public RepeatManager RepeatManager => repeatManager;
+    public RepeatApplyManager RepeatApplyManager => repeatApplyManager;
+    
+    
 
     [SerializeField] private Image targetImage;
     [SerializeField] private SlotStorage slotStorage;
@@ -68,6 +75,7 @@ public class PresentManager : MonoBehaviour
         selfDialogueManager = GetComponentInChildren<SelfDialogueManager>();
         dialogueManager = GetComponentInChildren<DialogueManager>();
         repeatManager = GetComponentInChildren<RepeatManager>();
+        repeatApplyManager = GetComponentInChildren<RepeatApplyManager>();
         //SetImageSlot();
     }
 
@@ -77,16 +85,18 @@ public class PresentManager : MonoBehaviour
         PlayerProgress progress = GameProgressManager.Instance.GetProgress();
         if (progress != null)
         {
-            ImageSlot slot=slotStorage.GetImageSlot(progress.chapter, progress.stage); //ÀÌ¹ÌÁö ½½·Ô¿¡¼­ ÀÌ¹ÌÁö °¡Á®¿Í¼­ ÀÌ¹ÌÁö ¹Ù²Ù±â
+            ImageSlot slot=slotStorage.GetImageSlot(progress.chapter, progress.stage); //ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Ù²Ù±ï¿½
 
-            targetImage.sprite = slot.sprite; //ÀÌ¹ÌÁö ¼Â
+            targetImage.sprite = slot.sprite; //ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½
 
-            dialogueManager.SetDialogueSlot(slot.dialogueSlot); // ´ëÈ­ ¼Â
+            dialogueManager.SetDialogueSlot(slot.dialogueSlot); // ï¿½ï¿½È­ ï¿½ï¿½
             
-            //slot.onStart?.Invoke();//½ÃÀÛ½Ã ¿øÇÏ´Â ÀÌº¥Æ® ÀÖÀ»½Ã ½ÇÇà
+            //slot.onStart?.Invoke();//ï¿½ï¿½ï¿½Û½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         }
     }
+
+  
 
     
 }

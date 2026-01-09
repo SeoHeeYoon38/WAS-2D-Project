@@ -5,7 +5,7 @@ public class GameProgressManager : MonoBehaviour
 {
     public static GameProgressManager Instance;
 
-    public PlayerProgress progress = new PlayerProgress();
+    [SerializeField]private PlayerProgress progress = new PlayerProgress();
 
     private const string SAVE_KEY = "PLAYER_PROGRESS";
 
@@ -23,7 +23,7 @@ public class GameProgressManager : MonoBehaviour
         }
     }
 
-    // ÁøÇàµµ ÀúÀå
+    // ï¿½ï¿½ï¿½àµµ ï¿½ï¿½ï¿½ï¿½
     public void SaveProgress(int chapter, int stage)
     {
         progress.chapter = chapter;
@@ -34,7 +34,7 @@ public class GameProgressManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    // ÁøÇàµµ ºÒ·¯¿À±â
+    // ï¿½ï¿½ï¿½àµµ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
     public void LoadProgress()
     {
         if (PlayerPrefs.HasKey(SAVE_KEY))
