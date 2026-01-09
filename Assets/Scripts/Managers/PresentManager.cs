@@ -13,7 +13,9 @@ public class PresentManager : MonoBehaviour
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private RepeatManager repeatManager;
     [SerializeField] private RepeatApplyManager repeatApplyManager;
-
+    
+    [SerializeField] private FadeManager fadeManager;
+    [SerializeField] private VibeManager vibeManager;
     public SelectManager SelectManager => selectManager;
     public SelfDialogueManager SelfDialogueManager => selfDialogueManager;
     public DialogueManager DialogueManager => dialogueManager;
@@ -79,7 +81,8 @@ public class PresentManager : MonoBehaviour
         dialogueManager = GetComponentInChildren<DialogueManager>();
         repeatManager = GetComponentInChildren<RepeatManager>();
         repeatApplyManager = GetComponentInChildren<RepeatApplyManager>();
-        
+        fadeManager = GetComponentInChildren<FadeManager>();
+        vibeManager = GetComponentInChildren<VibeManager>();
         //StartPresentation();
     }
 
@@ -92,11 +95,35 @@ public class PresentManager : MonoBehaviour
             currentPresentationCard=presentationCardStorage.GetPresentationCard(progress.chapter, progress.stage); //�̹��� ���Կ��� �̹��� �����ͼ� �̹��� �ٲٱ�
             
         }
+        
         PresentImageSlot();
     }
    
     public void PresentNextImageSlot()
     {
+        ImageSlot imageSlot = currentPresentationCard.GetCurrentImageSlot();
+        
+        if (imageSlot.endFade)  //presentend
+        {
+            fadeManager.FadeIn();
+        }
+        else
+        {
+            
+        }
+        
+        
+        if (imageSlot.endVibe)
+        {
+            vibeManager.Vibe();
+        }
+        else
+        {
+            
+        }
+        
+        
+        
         currentPresentationCard.PlusImageSlotIdx(); // read on imageslot
         
         if (currentPresentationCard.CheckIsImageSlotRemain()) //isremain?
@@ -112,7 +139,29 @@ public class PresentManager : MonoBehaviour
     private void PresentImageSlot()
     {
         ImageSlot imageSlot = currentPresentationCard.GetCurrentImageSlot();
+
+        if (imageSlot.startFade)
+        {
+            fadeManager.FadeOut();
+        }
+        else
+        {
             
+        }
+        
+        
+        if (imageSlot.startVibe)
+        {
+            vibeManager.Vibe();
+        }
+        else
+        {
+            
+        }
+        
+        
+        
+        
         targetImage.sprite = imageSlot.sprite; //�̹��� ��
 
         dialogueManager.SetDialogueSlot(imageSlot.dialogueSlot); // ��ȭ ��

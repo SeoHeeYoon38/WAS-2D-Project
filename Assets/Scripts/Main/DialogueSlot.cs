@@ -13,4 +13,24 @@ public class DialogueSlot : ScriptableObject
     
     [Header("3) ���� ��簡 �ִٸ�")] 
     public DialogueSlot nextDialogueSlot;
+    
+    [Header("4) 자문 자답 상호작용 ")]
+    
+    
+    
+    [Header("5) 시작시 효과 ")] 
+    public bool startFade;
+    public float startFadeDuration;
+
+    public bool startVibe;
+    public float startIntense;
+    
+    [Header("6) 종료시 효과 ")]
+    
+    public bool endFade;
+    public float endFadeDuration;
+
+    public bool endVibe;
+    public float endIntense;
+    
 }

@@ -2,15 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class FadeEvent : MonoBehaviour
+public class FadeManager : MonoBehaviour
 {
-    [SerializeField] private Graphic target;   // Image, Text µî GraphicÀÌ¸é ´Ù µÊ
+    [SerializeField] private Graphic target;   // Image, Text ï¿½ï¿½ Graphicï¿½Ì¸ï¿½ ï¿½ï¿½ ï¿½ï¿½
     [SerializeField] private float duration = 0.5f;
     [SerializeField] private bool blockRaycastWhileOpaque = true;
 
     private Tween tween;
 
-    public void FadeIn()  // 1 -> 0 (»ç¶óÁü)
+    public void FadeIn()  // 1 -> 0 (ï¿½ï¿½ï¿½ï¿½ï¿½)
     {
         if (target == null) return;
         Kill();
@@ -20,7 +20,7 @@ public class FadeEvent : MonoBehaviour
             .OnComplete(() => { if (blockRaycastWhileOpaque) target.raycastTarget = false; });
     }
 
-    public void FadeOut() // 0 -> 1 (³ªÅ¸³²)
+    public void FadeOut() // 0 -> 1 (ï¿½ï¿½Å¸ï¿½ï¿½)
     {
         if (target == null) return;
         Kill();

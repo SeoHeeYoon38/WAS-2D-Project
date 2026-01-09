@@ -18,7 +18,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 343e063e17367164e98af6fd587f69b4, type: 2}
   - {fileID: 11400000, guid: 8b1ab97006df7eb43be0b91075c85ba0, type: 2}
   - {fileID: 11400000, guid: 70e0a0c43fefbc54e8661c640f5787cc, type: 2}
-  - {fileID: 11400000, guid: 09076eca69896dd4d8c9c77b7538510f, type: 2}
   repeatSlots:
   - {fileID: 0}
   selectNumbers: 000000000000000000000000

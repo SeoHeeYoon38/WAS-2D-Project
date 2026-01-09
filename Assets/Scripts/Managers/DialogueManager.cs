@@ -61,6 +61,7 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("current is null");
         }
 
+        
             StartDialogue();
     }
 

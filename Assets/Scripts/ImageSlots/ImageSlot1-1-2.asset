@@ -14,3 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ImageSlot
   sprite: {fileID: 4653932814348791077, guid: f47f78478d8c114489f50aeaf2c992ea, type: 3}
   dialogueSlot: {fileID: 11400000, guid: 972880c124bebec439f8712d7fed93e5, type: 2}
+  startFade: 0
+  startFadeDuration: 0
+  startVibe: 1
+  startIntense: 2
+  endFade: 0
+  endFadeDuration: 0
+  endVibe: 0
+  endIntense: 0

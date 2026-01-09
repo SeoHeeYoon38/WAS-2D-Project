@@ -29,6 +29,6 @@ public class PresentationCardStorage : MonoBehaviour
         {
             Debug.LogWarning($"ImageSlot�� �������: chapter {chapter}, stage {stage} (index {index})");
         }
-        return slot;
+        return Instantiate(slot);
     }
 }

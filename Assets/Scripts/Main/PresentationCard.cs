@@ -27,6 +27,7 @@ public class PresentationCard : ScriptableObject
     public ImageSlot GetCurrentImageSlot()
     {
         if (currentImageIdx < 0 || currentImageIdx >= imageSlots.Count) return null;
+        Debug.Log(imageSlots[currentImageIdx].sprite.name);
         return imageSlots[currentImageIdx];
     }
 
