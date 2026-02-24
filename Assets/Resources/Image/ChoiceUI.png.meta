@@ -116,10 +116,10 @@ TextureImporter:
       name: ChoiceUI_0
       rect:
         serializedVersion: 2
-        x: 55
-        y: 18
-        width: 42
-        height: 51
+        x: 50
+        y: 11
+        width: 52
+        height: 63
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

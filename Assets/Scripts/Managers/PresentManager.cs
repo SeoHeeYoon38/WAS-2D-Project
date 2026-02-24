@@ -13,6 +13,9 @@ public class PresentManager : MonoBehaviour
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private RepeatManager repeatManager;
     [SerializeField] private RepeatApplyManager repeatApplyManager;
+    [SerializeField] private AnimationManager AnimationManager;
+
+    
     
     [SerializeField] private FadeManager fadeManager;
     [SerializeField] private VibeManager vibeManager;
@@ -177,16 +180,16 @@ public class PresentManager : MonoBehaviour
 
     public void SwitchSelectImage(int v1, int v2, int v3)
     {
-        if (currentPresentationCard.CheckIsAllSelectComplete(v1, v2, v3))//if all complete
-        {
-            selectManager.HideSelectPanel();
-            repeatApplyManager.Initialize(currentPresentationCard.GetAllRepeatSlots());
-            repeatManager.ShowPanel();
-        }
-        else // is not 
-        {
-            
-        }
+        // if (currentPresentationCard.CheckIsAllSelectComplete(v1, v2, v3))//if all complete
+        // {
+        //     selectManager.HideSelectPanel();
+        //     repeatApplyManager.Initialize(currentPresentationCard.GetAllRepeatSlots());
+        //     repeatManager.ShowPanel();
+        // }
+        // else // is not 
+        // {
+        //     
+        // }
         
     }
 
@@ -196,8 +199,17 @@ public class PresentManager : MonoBehaviour
         
         if (currentPresentationCard.CheckIsAllRepeatApplied())
         {
+            repeatManager.HidePanel();
+            AnimationManager.ShowAnimationPanel();
+            PlayAnimationPart();
            //go animation  
         }
+        
+    }
+
+
+    public void PlayAnimationPart()
+    {
         
     }
     

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fdf40262d0b2e6540bcea4020209d0a3
+guid: 09a574fd1adf7c24a9dc90cfc407f366
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Griun Yuri Daggu
+  - Galmuri9
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
