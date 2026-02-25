@@ -24,4 +24,6 @@ public class RepeatManager : MonoBehaviour
             repeatPanel.SetActive(false);
     }
 
+
+    
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Story/PresentationCard", fileName = "PresentationCard")]
 public class PresentationCard : ScriptableObject
@@ -7,14 +8,15 @@ public class PresentationCard : ScriptableObject
     [Header("Card Identity")]
     [SerializeField] private int stage;
     [SerializeField] private int chapter;
-
+    
+    [Header("Fixed select numbers per card")]
+    [SerializeField] private int[] selectNumbers = new int[3];
+    
+    
     [Header("Slots")]
     [SerializeField] private List<ImageSlot> imageSlots = new();
     [SerializeField] private List<RepeatSlot> repeatSlots = new();
-
-    [Header("Fixed select numbers per card")]
-    [SerializeField] private int[] selectNumbers = new int[3];
-
+    [SerializeField] private List<Sprite> repeatCandidates = new();
     
     [Header("Idx")]
     [SerializeField] private int currentImageIdx=0;
@@ -61,7 +63,11 @@ public class PresentationCard : ScriptableObject
     {
         return repeatSlots.ToArray();
     }
-    
+
+    public List<Sprite> GetAllRepeatCandidates()
+    {
+        return repeatCandidates;
+    }
     public bool CheckIsAllRepeatApplied()
     {
         return currentRepeatIdx < repeatSlots.Count;

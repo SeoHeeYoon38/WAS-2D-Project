@@ -9,7 +9,6 @@ public class PresentManager : MonoBehaviour
     public static PresentManager Instance;
 
     [SerializeField] private SelectManager selectManager;
-    [SerializeField] private SelfDialogueManager selfDialogueManager;
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private RepeatManager repeatManager;
     [SerializeField] private RepeatApplyManager repeatApplyManager;
@@ -20,7 +19,6 @@ public class PresentManager : MonoBehaviour
     [SerializeField] private FadeManager fadeManager;
     [SerializeField] private VibeManager vibeManager;
     public SelectManager SelectManager => selectManager;
-    public SelfDialogueManager SelfDialogueManager => selfDialogueManager;
     public DialogueManager DialogueManager => dialogueManager;
     public RepeatManager RepeatManager => repeatManager;
     public RepeatApplyManager RepeatApplyManager => repeatApplyManager;
@@ -62,7 +60,6 @@ public class PresentManager : MonoBehaviour
                 StartPresentation();
                 break;
             case 2:
-                selfDialogueManager.ShowDialogue("HelloWorld");
                 break;
             case 3:
                 selectManager.ShowSelectPanel();
@@ -80,13 +77,12 @@ public class PresentManager : MonoBehaviour
     private void Start()
     {
         selectManager = GetComponentInChildren<SelectManager>();
-        selfDialogueManager = GetComponentInChildren<SelfDialogueManager>();
         dialogueManager = GetComponentInChildren<DialogueManager>();
         repeatManager = GetComponentInChildren<RepeatManager>();
         repeatApplyManager = GetComponentInChildren<RepeatApplyManager>();
         fadeManager = GetComponentInChildren<FadeManager>();
         vibeManager = GetComponentInChildren<VibeManager>();
-        //StartPresentation();
+        StartPresentation();
     }
 
 
@@ -166,7 +162,8 @@ public class PresentManager : MonoBehaviour
         
         
         targetImage.sprite = imageSlot.sprite; //�̹��� ��
-
+        
+        
         dialogueManager.SetDialogueSlot(imageSlot.dialogueSlot); // ��ȭ ��
     }
 
@@ -180,16 +177,17 @@ public class PresentManager : MonoBehaviour
 
     public void SwitchSelectImage(int v1, int v2, int v3)
     {
-        // if (currentPresentationCard.CheckIsAllSelectComplete(v1, v2, v3))//if all complete
-        // {
-        //     selectManager.HideSelectPanel();
-        //     repeatApplyManager.Initialize(currentPresentationCard.GetAllRepeatSlots());
-        //     repeatManager.ShowPanel();
-        // }
-        // else // is not 
-        // {
-        //     
-        // }
+         if (currentPresentationCard.CheckIsAllSelectComplete(v1, v2, v3))//if all complete
+         {
+             selectManager.HideSelectPanel();
+             repeatApplyManager.Initialize(currentPresentationCard);
+             repeatManager.ShowPanel();
+         }
+         else
+         {
+             
+         }
+        
         
     }
 

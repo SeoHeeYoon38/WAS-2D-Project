@@ -33,4 +33,8 @@ public class DialogueSlot : ScriptableObject
     public bool endVibe;
     public float endIntense;
     
+
+    [Header("7) 종류 ")] 
+    public bool isAnswer;
+
 }

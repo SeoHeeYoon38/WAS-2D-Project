@@ -14,12 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PresentationCard
   stage: 1
   chapter: 1
+  selectNumbers: 000000000000000000000000
   imageSlots:
   - {fileID: 11400000, guid: 343e063e17367164e98af6fd587f69b4, type: 2}
-  - {fileID: 11400000, guid: 8b1ab97006df7eb43be0b91075c85ba0, type: 2}
-  - {fileID: 11400000, guid: 70e0a0c43fefbc54e8661c640f5787cc, type: 2}
   repeatSlots:
-  - {fileID: 0}
-  selectNumbers: 000000000000000000000000
+  - {fileID: 11400000, guid: 80fc223255902a447b3fda51ef89ec4b, type: 2}
+  repeatCandidates:
+  - {fileID: -5108289230495781403, guid: dd7b0ed1f50ec7240abb6d2fcf3b2f2a, type: 3}
+  - {fileID: 7742304981389874621, guid: dd7b0ed1f50ec7240abb6d2fcf3b2f2a, type: 3}
+  - {fileID: 3274914159080681721, guid: dd7b0ed1f50ec7240abb6d2fcf3b2f2a, type: 3}
+  - {fileID: -5906798968516901250, guid: dd7b0ed1f50ec7240abb6d2fcf3b2f2a, type: 3}
+  - {fileID: 331333990786774308, guid: f8e01f078bc3e894aa846e1dad7743c4, type: 3}
+  - {fileID: 2527397012028632365, guid: d8b22cd1933de9e49bccd0cf2e1fd433, type: 3}
+  - {fileID: 8072733593307693642, guid: a520cd3d70e71e5418a6f469cda17826, type: 3}
+  - {fileID: 4141861144931316035, guid: a520cd3d70e71e5418a6f469cda17826, type: 3}
+  - {fileID: 108224555787871960, guid: a520cd3d70e71e5418a6f469cda17826, type: 3}
+  - {fileID: 8097235432345496036, guid: a520cd3d70e71e5418a6f469cda17826, type: 3}
+  - {fileID: 8097235432345496036, guid: a520cd3d70e71e5418a6f469cda17826, type: 3}
+  - {fileID: 8097235432345496036, guid: a520cd3d70e71e5418a6f469cda17826, type: 3}
   currentImageIdx: 0
   currentRepeatIdx: 0

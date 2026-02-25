@@ -14,6 +14,8 @@ public class DialogueManager : MonoBehaviour
     [Header("Typing")]
     [SerializeField] private float charsPerSecond = 30f;
 
+    [SerializeField] private SelfDialogueManager selfDialogueManager;
+    public SelfDialogueManager SelfDialogueManager => selfDialogueManager;
 
 
     private Tween typingTween;
@@ -49,8 +51,7 @@ public class DialogueManager : MonoBehaviour
 
     public void SetDialogueSlot(DialogueSlot target) // ���� ��ȭ ���� ���� 
     {
-        ShowDialogue();
-
+        
         currentDialogueSlot = target;
         if (currentDialogueSlot != null)
         {
@@ -61,12 +62,24 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("current is null");
         }
 
-        
+
+        if (target.isAnswer)
+        {
+            HideDialogue();
+            selfDialogueManager.ShowDialogue(target.text);
+        }
+        else
+        {
             StartDialogue();
+        }
+        
+        
     }
 
     public void StartDialogue() //��ȭ���� 
     {
+        ShowDialogue();
+        
         string line = currentDialogueSlot.text;
 
         KillTypingTween();
@@ -145,7 +158,7 @@ public class DialogueManager : MonoBehaviour
         isLineFullyShown = true;
     }
 
-    private void StartNext()
+    public void StartNext()
     {
         if (currentDialogueSlot.nextDialogueSlot != null) // ���� ��ȭ�� �����ϸ� �״�� ��� 
         {

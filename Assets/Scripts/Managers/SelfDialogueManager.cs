@@ -3,11 +3,11 @@ using DG.Tweening;
 using TMPro;
 public class SelfDialogueManager : MonoBehaviour
 {
-    [Header("ÆÐ³Î ·çÆ® (CanvasGroup ÇÊ¼ö)")]
+    [Header("ï¿½Ð³ï¿½ ï¿½ï¿½Æ® (CanvasGroup ï¿½Ê¼ï¿½)")]
     [SerializeField] private CanvasGroup dialoguePanel;
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI dialogueText;
-    [Header("ÆäÀÌµå ÀÎ ½Ã°£")]
+    [Header("ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ ï¿½Ã°ï¿½")]
     [SerializeField] private float fadeTime = 0.5f;
 
     private Tween fadeTween;
@@ -16,7 +16,7 @@ public class SelfDialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        // ½ÃÀÛ ½Ã ¼û±è
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         dialoguePanel.alpha = 0f;
         dialoguePanel.gameObject.SetActive(false);
     }
@@ -24,19 +24,19 @@ public class SelfDialogueManager : MonoBehaviour
 
     public void ShowDialogue(string message)
     {
-        // ÅØ½ºÆ® º¯°æ
+        // ï¿½Ø½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
         dialogueText.text = message;
 
-        // ÆÐ³Î È°¼ºÈ­
+        // ï¿½Ð³ï¿½ È°ï¿½ï¿½È­
         dialoguePanel.gameObject.SetActive(true);
 
-        // ±âÁ¸ Æ®À© ÀÖÀ¸¸é Á¦°Å
+        // ï¿½ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         fadeTween?.Kill();
 
-        // ¾ËÆÄ ÃÊ±âÈ­
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         dialoguePanel.alpha = 0f;
 
-        // ÆäÀÌµå ÀÎ
+        // ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½
         fadeTween = dialoguePanel.DOFade(1f, fadeTime)
             .SetEase(Ease.OutQuad);
     }
@@ -44,10 +44,12 @@ public class SelfDialogueManager : MonoBehaviour
 
     public void HideDialogue()
     {
-        fadeTween?.Kill();                 // ÆäÀÌµå ÁßÀÌ¾úÀ¸¸é ²÷°í
-        dialogueText.text = "";            // ÅØ½ºÆ® ¾È º¸ÀÌ°Ô(ºñ¿ì±â)
-        dialoguePanel.alpha = 0f;          // Åõ¸í
-        dialoguePanel.gameObject.SetActive(false); // ºñÈ°¼ºÈ­(ÆÌ)
+        fadeTween?.Kill();                 // ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        dialogueText.text = "";            // ï¿½Ø½ï¿½Æ® ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½(ï¿½ï¿½ï¿½ï¿½)
+        dialoguePanel.alpha = 0f;          // ï¿½ï¿½ï¿½ï¿½
+        dialoguePanel.gameObject.SetActive(false); // ï¿½ï¿½È°ï¿½ï¿½È­(ï¿½ï¿½)
+        
+        PresentManager.Instance.DialogueManager.StartNext();
     }
 
 }

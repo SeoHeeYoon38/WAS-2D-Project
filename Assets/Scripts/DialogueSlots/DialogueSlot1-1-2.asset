@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 677486ea930598c4d9f2dc4629ddcb99, type: 3}
   m_Name: DialogueSlot1-1-2
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSlot
-  text: 'It''s test time '
+  text: "\uC548\uB155\uD558\uC138\uC694."
   sfx: {fileID: 0}
-  onStart:
-    m_PersistentCalls:
-      m_Calls: []
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
   nextDialogueSlot: {fileID: 11400000, guid: 2f3098cad97e17d44964b293d993627d, type: 2}
+  startFade: 0
+  startFadeDuration: 0
+  startVibe: 0
+  startIntense: 0
+  endFade: 0
+  endFadeDuration: 0
+  endVibe: 0
+  endIntense: 0
+  isAnswer: 0
