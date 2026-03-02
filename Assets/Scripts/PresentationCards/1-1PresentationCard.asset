@@ -32,5 +32,6 @@ MonoBehaviour:
   - {fileID: 8097235432345496036, guid: a520cd3d70e71e5418a6f469cda17826, type: 3}
   - {fileID: 8097235432345496036, guid: a520cd3d70e71e5418a6f469cda17826, type: 3}
   - {fileID: 8097235432345496036, guid: a520cd3d70e71e5418a6f469cda17826, type: 3}
+  repeatImage: {fileID: 61051429634949654, guid: 2899e34f4f74b98428d9e245d58749e8, type: 3}
   currentImageIdx: 0
   currentRepeatIdx: 0

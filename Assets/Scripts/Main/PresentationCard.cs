@@ -18,12 +18,22 @@ public class PresentationCard : ScriptableObject
     [SerializeField] private List<RepeatSlot> repeatSlots = new();
     [SerializeField] private List<Sprite> repeatCandidates = new();
     
+    [Header("RepeatImage")]
+    [SerializeField] private Sprite repeatImage ;
+
+
+    [Header("AnimationCard")]
+    [SerializeField] private AnimationCard animationCard;
+    
     [Header("Idx")]
     [SerializeField] private int currentImageIdx=0;
     [SerializeField] private int currentRepeatIdx=0;
     
     public int Stage => stage;
     public int Chapter => chapter;
+    public Sprite RepeatImage => repeatImage;
+    
+    public AnimationCard AnimationCard => animationCard;
     public IReadOnlyList<int> SelectNumbers => selectNumbers;
 
     public ImageSlot GetCurrentImageSlot()
@@ -56,6 +66,7 @@ public class PresentationCard : ScriptableObject
     
     public void PlusRepeatIdx()
     {
+        Debug.Log("하나추가요");
         currentRepeatIdx++;
     }
 
@@ -70,7 +81,7 @@ public class PresentationCard : ScriptableObject
     }
     public bool CheckIsAllRepeatApplied()
     {
-        return currentRepeatIdx < repeatSlots.Count;
+        return currentRepeatIdx <= repeatSlots.Count;
     }
     
 

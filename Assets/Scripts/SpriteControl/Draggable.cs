@@ -65,6 +65,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             
             if (repeatApplyManager.IsEffectiveDragDrop((Vector2)worldPos, draggingSprite.name))
             {//성공
+                Debug.Log("성공!");
                 cg.alpha = 0f;
                 DestroyPreview();
         

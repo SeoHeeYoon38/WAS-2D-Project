@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RepeatSlot
   stage: 1
   chapter: 1
-  key: 
-  position: {x: 0, y: 0}
-  size: {x: 100, y: 100}
+  key: Stage1_Character1_0
+  position: {x: -0.02, y: 0.03}
+  size: {x: 1, y: 1}

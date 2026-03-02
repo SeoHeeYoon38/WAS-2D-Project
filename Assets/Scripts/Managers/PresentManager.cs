@@ -82,6 +82,7 @@ public class PresentManager : MonoBehaviour
         repeatApplyManager = GetComponentInChildren<RepeatApplyManager>();
         fadeManager = GetComponentInChildren<FadeManager>();
         vibeManager = GetComponentInChildren<VibeManager>();
+        AnimationManager = GetComponentInChildren<AnimationManager>();
         StartPresentation();
     }
 
@@ -180,8 +181,8 @@ public class PresentManager : MonoBehaviour
          if (currentPresentationCard.CheckIsAllSelectComplete(v1, v2, v3))//if all complete
          {
              selectManager.HideSelectPanel();
-             repeatApplyManager.Initialize(currentPresentationCard);
              repeatManager.ShowPanel();
+             repeatApplyManager.Initialize(currentPresentationCard);
          }
          else
          {
@@ -199,7 +200,8 @@ public class PresentManager : MonoBehaviour
         {
             repeatManager.HidePanel();
             AnimationManager.ShowAnimationPanel();
-            PlayAnimationPart();
+            AnimationManager.PlayAnimation(currentPresentationCard.AnimationCard);
+            //PlayAnimationPart();
            //go animation  
         }
         

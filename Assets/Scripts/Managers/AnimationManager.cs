@@ -4,7 +4,8 @@ public class AnimationManager : MonoBehaviour
 {
     
     [SerializeField] private GameObject AnimationPanel;
-
+    [SerializeField] private AnimationCard currentAnimationCard;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,6 +28,12 @@ public class AnimationManager : MonoBehaviour
     {
         if (AnimationPanel != null)
             AnimationPanel.SetActive(false);
+    }
+
+
+    public void PlayAnimation(AnimationCard input)
+    {
+        currentAnimationCard = input;
     }
     
 }

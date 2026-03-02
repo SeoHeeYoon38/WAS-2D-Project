@@ -7,18 +7,20 @@ public class RepeatApplyManager : MonoBehaviour
 {
     
     [SerializeField] private RepeatSlot[] currentRepeatSlots; // 모든 RepeatSlot SO를 여기 넣기
-    [SerializeField] private float snapDistance = 50f;
+    [SerializeField] private float snapDistance = 0.5f;
     [SerializeField] private Transform parentImage;
     
     [SerializeField] private GameObject repeatContent;
     [SerializeField] private GameObject repeatSlotPrefab;
+    [SerializeField] private Image repeatImage;
     private readonly List<GameObject> spawnedSlots = new List<GameObject>();
 
     public void Initialize(PresentationCard input)
     {
         DeleteRepeatSlots();
-        
-        UpdateRepeatContents(input.GetAllRepeatCandidates());
+        repeatImage.sprite = input.RepeatImage;
+        currentRepeatSlots = input.GetAllRepeatSlots(); //키후보 채우기
+        UpdateRepeatContents(input.GetAllRepeatCandidates()); //선택후보채우기
     }
 
     private void UpdateRepeatContents(List<Sprite> repeatCandidates)
@@ -56,8 +58,10 @@ public class RepeatApplyManager : MonoBehaviour
     {
         var p = GameProgressManager.Instance.GetProgress();
         
+        
         foreach (var slot in currentRepeatSlots)
         {
+            //Debug.Log(key+"비교대상은"+slot.Key);
             if (slot != null && slot.IsMatch(dropPos, key, snapDistance))
                 return true;
         }
@@ -72,29 +76,33 @@ public class RepeatApplyManager : MonoBehaviour
         
         RepeatSlot target = null;
 
-        foreach (var slot in currentRepeatSlots) // 해당하는 repeatslot 찾기
+        foreach (var slot in currentRepeatSlots)
         {
             if (slot == null) continue;
-            if (string.Equals(slot.Key, spriteToSpawn.name, StringComparison.Ordinal))
+            if (string.Equals(slot.Key, spriteToSpawn.name))
             {
                 target = slot;
                 break; 
             }
         }
 
-        GameObject go = new GameObject($"Repeat_{spriteToSpawn.name}", typeof(RectTransform));
+        if (target == null)
+        {
+            Debug.LogWarning("Target RepeatSlot not found.");
+            return;
+        }
+
+        // GameObject 생성
+        GameObject go = new GameObject($"Repeat_{spriteToSpawn.name}");
         go.transform.SetParent(parentImage, false);
 
-    
-        Image img = go.AddComponent<Image>();
-        img.sprite = spriteToSpawn;
-        img.preserveAspect = true;
-        img.raycastTarget = false;
+        // SpriteRenderer 추가
+        SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
+        sr.sprite = spriteToSpawn;
 
-        RectTransform rt = img.rectTransform;
-        rt.anchoredPosition = target.Position;
-        rt.localScale = Vector3.one;
-        rt.sizeDelta = target.Size;
+        // ⭐️ 월드 좌표로 설정
+        go.transform.localPosition = target.Position; 
+        go.transform.localScale = Vector3.one;
 
         PresentManager.Instance.ApplyRepeat();
     }
