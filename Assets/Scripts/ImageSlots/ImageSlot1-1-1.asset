@@ -1,24 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1544681a4cc11bb46b0d1fae584edaaa, type: 3}
-  m_Name: ImageSlot1-1-1
-  m_EditorClassIdentifier: Assembly-CSharp::ImageSlot
-  sprite: {fileID: 8053899242462091416, guid: a38c02c81227db843a022bcf78a2d008, type: 3}
-  dialogueSlot: {fileID: 11400000, guid: 711b870511aac964d93e223d16304617, type: 2}
-  startFade: 1
-  startFadeDuration: 0
-  startVibe: 0
-  startIntense: 0
-  endFade: 0
-  endFadeDuration: 0
-  endVibe: 0
-  endIntense: 0
+version https://git-lfs.github.com/spec/v1
+oid sha256:22c17de3a51e1d24999f48b73d0a571763f57dc69c8d79e0d4832a739a8e2e8d
+size 760
