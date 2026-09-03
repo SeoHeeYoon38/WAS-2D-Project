@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class GameStarter : MonoBehaviour
 {
-    // ������ ������ �̵�
     public void LoadScene(string sceneName)
     {
         GameProgressManager.Instance.LoadProgress();

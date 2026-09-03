@@ -22,7 +22,6 @@ public class GameProgressManager : MonoBehaviour
         }
     }
 
-    // ���൵ ����
     public void SaveProgress(int chapter, int stage)
     {
         progress.chapter = chapter;
@@ -33,7 +32,6 @@ public class GameProgressManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    // ���൵ �ҷ�����
     public void LoadProgress()
     {
         if (PlayerPrefs.HasKey(SAVE_KEY))
