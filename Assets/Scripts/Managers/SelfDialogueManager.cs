@@ -52,4 +52,17 @@ public class SelfDialogueManager : MonoBehaviour
         PresentManager.Instance.DialogueManager.StartNext();
     }
 
+
+    /// <summary>현재 선택지(자문 대사)창이 떠 있는지</summary>
+    public bool IsShowing => dialoguePanel != null && dialoguePanel.gameObject.activeSelf;
+
+    /// <summary>진행(StartNext) 없이 창만 닫는다. 창이 다음 화면까지 남는 문제 방지용.</summary>
+    public void ForceHide()
+    {
+        fadeTween?.Kill();
+        if (dialogueText != null) dialogueText.text = "";
+        if (dialoguePanel == null) return;
+        dialoguePanel.alpha = 0f;
+        dialoguePanel.gameObject.SetActive(false);
+    }
 }

@@ -37,6 +37,8 @@ public class DialogueManager : MonoBehaviour
     private void HideDialogue()
     {
         dialoguePanel.SetActive(false);
+        // 선택지(자문 대사)창이 다음 화면까지 남아있지 않게 같이 닫는다
+        if (selfDialogueManager != null) selfDialogueManager.ForceHide();
     }
 
         private void Update()
@@ -137,6 +139,10 @@ public class DialogueManager : MonoBehaviour
     private void HandleAdvanceInput() // ��ȭ ���� 
     {
         
+        // 선택지(자문 대사)가 떠 있는 동안에는 Enter 로 넘기지 못하게 한다.
+        // (넘겨버리면 선택지 창이 그대로 남은 채 다음 화면으로 진행됨)
+        if (selfDialogueManager != null && selfDialogueManager.IsShowing) return;
+
         if (isTyping && !isLineFullyShown)
         {
             ForceCompleteLine();
